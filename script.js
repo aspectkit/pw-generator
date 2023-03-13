@@ -110,6 +110,17 @@ function generatePassword(){
     var includeNumerics = getNumerics();
     var includeSpecial = getSpecial();
 
+    var passwordText = document.querySelector("#password");
+
+    if (!includeLowerLetters && !includeUpperLetters && !includeNumerics && !includeSpecial){
+        alert("Nothing selected! Try Again!");
+        passwordText.setAttribute("style", "color: red");
+
+        return "You need to include at least one of the types of characters!";
+    } else {
+        passwordText.setAttribute("style", "color: black");
+    }
+
     if (includeLowerLetters){
         usableCharacters = usableCharacters.concat(lowers);
         var requiredLower = getRandomCharacter(lowers);
